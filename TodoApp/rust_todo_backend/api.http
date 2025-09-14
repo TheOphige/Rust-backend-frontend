@@ -1,0 +1,69 @@
+### -------------------------- AUTHENTICATION --------------------------
+
+### Register User
+POST http://localhost:8080/api/v1/auth/register
+content-type: application/json
+
+{
+    "username": "testuser2",
+    "email": "testuser@example2.com",
+    "password": "supersecret"
+}
+
+### Login User
+POST http://localhost:8080/api/v1/auth/login
+content-type: application/json
+
+{
+    "email": "testuser@example2.com",
+    "password": "supersecret"
+}
+
+### -------------------------- HEALTH CHECK --------------------------
+
+GET http://localhost:8080/api/v1/healthcheck
+
+### -------------------------- TODOS --------------------------
+
+### List Todos (requires auth)
+GET http://localhost:8080/api/v1/todos
+Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIzZjAxZTQyNC0yMzhmLTQ0YzEtOTQzYS0wMmUyMjJiZDAxY2IiLCJleHAiOjE3NTc3MjI4MDd9.2HrPePJ4iUdNKNjQMMfqDCMlpDDbcTpiQ4duHmZ_iKc
+
+### Create Todo (requires auth)
+POST http://localhost:8080/api/v1/todos
+Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIzZjAxZTQyNC0yMzhmLTQ0YzEtOTQzYS0wMmUyMjJiZDAxY2IiLCJleHAiOjE3NTc3MjI4MDd9.2HrPePJ4iUdNKNjQMMfqDCMlpDDbcTpiQ4duHmZ_iKc
+content-type: application/json
+
+{
+    "title": "sleep like a baby",
+    "description": "rest is for the weak",
+    "is_completed": true
+}
+
+### Read Todo by ID (requires auth)
+GET http://localhost:8080/api/v1/todos/b05433dd-322e-48d8-85b9-ffa35c8ec795
+Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIzZjAxZTQyNC0yMzhmLTQ0YzEtOTQzYS0wMmUyMjJiZDAxY2IiLCJleHAiOjE3NTc3MjI4MDd9.2HrPePJ4iUdNKNjQMMfqDCMlpDDbcTpiQ4duHmZ_iKc
+
+### Update Todo (requires auth)
+PATCH http://localhost:8080/api/v1/todos/a1e0238d-b4a5-495d-9e58-eb13553aa9ab
+Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIzZjAxZTQyNC0yMzhmLTQ0YzEtOTQzYS0wMmUyMjJiZDAxY2IiLCJleHAiOjE3NTc3MjI4MDd9.2HrPePJ4iUdNKNjQMMfqDCMlpDDbcTpiQ4duHmZ_iKc
+content-type: application/json
+
+{
+    "description": "Milk, eggs, bread, fruits, and cheese",
+    "is_completed": true
+}
+
+### Delete Todo (requires auth)
+DELETE http://localhost:8080/api/v1/todos/2102070b-f0d9-42d5-abfd-5c18fe271b84
+Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIzZjAxZTQyNC0yMzhmLTQ0YzEtOTQzYS0wMmUyMjJiZDAxY2IiLCJleHAiOjE3NTc3MjI4MDd9.2HrPePJ4iUdNKNjQMMfqDCMlpDDbcTpiQ4duHmZ_iKc
+
+### -------------------------- FILTER & PAGINATION --------------------------
+
+### List Todos with pagination (optional)
+GET http://localhost:8080/api/v1/todos?limit=17&page=1
+Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIzZjAxZTQyNC0yMzhmLTQ0YzEtOTQzYS0wMmUyMjJiZDAxY2IiLCJleHAiOjE3NTc3MjI4MDd9.2HrPePJ4iUdNKNjQMMfqDCMlpDDbcTpiQ4duHmZ_iKc
+
+### List Todos with filtering by completion
+GET http://localhost:8080/api/v1/todos?is_completed=true
+Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIzZjAxZTQyNC0yMzhmLTQ0YzEtOTQzYS0wMmUyMjJiZDAxY2IiLCJleHAiOjE3NTc3MjI4MDd9.2HrPePJ4iUdNKNjQMMfqDCMlpDDbcTpiQ4duHmZ_iKc

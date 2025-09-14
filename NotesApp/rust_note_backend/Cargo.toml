@@ -1,0 +1,15 @@
+[package]
+name = "rust_note"
+version = "0.1.0"
+edition = "2024"
+
+[dependencies]
+axum = "0.8.4"
+chrono = { version = "0.4.42", features = ["serde"] }
+dotenvy = "0.15.7"
+serde = { version = "1.0.219", features = ["derive"] }
+serde_json = "1.0.143"
+sqlx = { version = "0.8.6", features = ["runtime-async-std-native-tls", "mysql", "chrono", "uuid"] }
+tokio = { version = "1.47.1", features = ["full"] }
+tower-http = { version = "0.6.6", features = ["cors"] }
+uuid = { version = "1.18.1", features = ["serde", "v4"] }
